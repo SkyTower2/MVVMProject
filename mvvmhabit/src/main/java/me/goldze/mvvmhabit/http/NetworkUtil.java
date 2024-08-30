@@ -23,7 +23,8 @@ public class NetworkUtil {
 
 
     /**
-     * check NetworkAvailable
+     * 检查设备是否连接到了网络
+     *
      * @param context
      * @return
      */
@@ -39,15 +40,16 @@ public class NetworkUtil {
     }
 
     /**
-     * getLocalIpAddress
+     * 获取设备的本地 IP 地址
+     *
      * @return
      */
     public static String getLocalIpAddress() {
         String ret = "";
         try {
-            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();) {
+            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements(); ) {
                 NetworkInterface intf = en.nextElement();
-                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();) {
+                for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements(); ) {
                     InetAddress inetAddress = enumIpAddr.nextElement();
                     if (!inetAddress.isLoopbackAddress()) {
                         ret = inetAddress.getHostAddress().toString();
@@ -61,7 +63,7 @@ public class NetworkUtil {
     }
 
     /**
-     * 返回当前网络状态
+     * 返回当前网络的状态，通过尝试访问百度来判断网络是否可用
      *
      * @param context
      * @return
@@ -90,7 +92,8 @@ public class NetworkUtil {
     }
 
     /**
-     *ping "http://www.baidu.com"
+     * 尝试建立到百度的 HTTP 连接，以判断网络连通性
+     *
      * @return
      */
     static private boolean connectionNetwork() {
@@ -113,7 +116,8 @@ public class NetworkUtil {
     }
 
     /**
-     * check is3G
+     * 判断当前网络是否为 3G 移动网络
+     *
      * @param context
      * @return boolean
      */
@@ -129,7 +133,8 @@ public class NetworkUtil {
     }
 
     /**
-     * isWifi
+     * 判断当前网络是否为 Wi-Fi
+     *
      * @param context
      * @return boolean
      */
@@ -145,7 +150,8 @@ public class NetworkUtil {
     }
 
     /**
-     * is2G
+     * 判断当前网络是否为 2G 移动网络
+     *
      * @param context
      * @return boolean
      */
@@ -163,7 +169,7 @@ public class NetworkUtil {
     }
 
     /**
-     *  is wifi on
+     * 判断 Wi-Fi 是否开启或设备是否已连接到网络
      */
     public static boolean isWifiEnabled(Context context) {
         ConnectivityManager mgrConn = (ConnectivityManager) context

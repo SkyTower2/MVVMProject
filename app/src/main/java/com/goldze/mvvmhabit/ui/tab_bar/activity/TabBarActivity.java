@@ -1,5 +1,6 @@
 package com.goldze.mvvmhabit.ui.tab_bar.activity;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import com.goldze.mvvmhabit.BR;
@@ -16,9 +17,12 @@ import java.util.List;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
 import me.goldze.mvvmhabit.base.BaseActivity;
 import me.goldze.mvvmhabit.base.BaseViewModel;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
+import me.majiajie.pagerbottomtabstrip.item.BaseTabItem;
+import me.majiajie.pagerbottomtabstrip.item.NormalItemView;
 import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
 /**
@@ -56,7 +60,29 @@ public class TabBarActivity extends BaseActivity<ActivityTabBarBinding, BaseView
         commitAllowingStateLoss(0);
     }
 
+    /**
+     * 创建一个底部导航栏的Item
+     */
+    private BaseTabItem newItem(int drawable, int checkedDrawable, String text, int textColor) {
+        NormalItemView normalItemView = new NormalItemView(this);
+        normalItemView.initialize(drawable, checkedDrawable, text);
+        normalItemView.setTextDefaultColor(Color.GRAY);
+        normalItemView.setTextCheckedColor(textColor);
+        return normalItemView;
+    }
+
     private void initBottomTab() {
+
+        /**
+         *NavigationController navigationController = binding.pagerBottomTab.custom() //自定义
+         *     .addItem(newItem(R.drawable.main_ic_home_unchecked, R.drawable.main_ic_home_checked, "主页", Color.RED))
+         *     .addItem(newItem(R.drawable.main_ic_volunteer_unchecked, R.drawable.main_ic_volunteer_checked, "志愿",Color.RED))
+         *     .addItem(newItem(R.drawable.main_ic_service_unchecked, R.drawable.main_ic_service_checked, "服务",Color.RED))
+         *     .addItem(newItem(R.drawable.main_ic_person_unchecked, R.drawable.main_ic_person_checked, "个人",Color.RED))
+         *     .build();
+         */
+
+        //配置底部导航栏信息，选择模式
         NavigationController navigationController = binding.pagerBottomTab.material()
                 .addItem(R.mipmap.yingyong, "应用")
                 .addItem(R.mipmap.huanzhe, "工作")
@@ -64,6 +90,13 @@ public class TabBarActivity extends BaseActivity<ActivityTabBarBinding, BaseView
                 .addItem(R.mipmap.wode_select, "我的")
                 .setDefaultColor(ContextCompat.getColor(this, R.color.textColorVice))
                 .build();
+
+        //设置消息数
+        navigationController.setMessageNumber(1, 2);
+
+        //设置显示小圆点
+        navigationController.setHasMessage(0, true);
+
         //底部按钮的点击事件监听
         navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
             @Override
@@ -79,6 +112,7 @@ public class TabBarActivity extends BaseActivity<ActivityTabBarBinding, BaseView
             }
         });
     }
+
     private void commitAllowingStateLoss(int position) {
         hideAllFragment();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
