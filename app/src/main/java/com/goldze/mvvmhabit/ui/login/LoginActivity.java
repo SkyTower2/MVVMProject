@@ -12,7 +12,9 @@ import com.goldze.mvvmhabit.databinding.ActivityLoginBinding;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+
 import me.goldze.mvvmhabit.base.BaseActivity;
+import me.goldze.mvvmhabit.utils.KLog;
 
 /**
  * 一个MVVM模式的登陆界面

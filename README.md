@@ -20,11 +20,6 @@
 
 > **原文地址：** [https://github.com/goldze/MVVMHabit](https://github.com/goldze/MVVMHabit)
 
-②群 <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=V3luKUW7"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="MVVMHabit-Family2" title="MVVMHabit-Family2"></a>
-
-①群 <a target="_blank" href="https://jq.qq.com/?_wv=1027&k=Fv9et98F"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="MVVMHabit-Family" title="MVVMHabit-Family"></a>
-（已满）
-
 # MVVMHabit
 
 ##
