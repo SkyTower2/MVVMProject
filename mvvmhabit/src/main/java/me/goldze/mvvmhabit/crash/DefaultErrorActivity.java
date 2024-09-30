@@ -33,6 +33,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
+
 import me.goldze.mvvmhabit.R;
 
 public final class DefaultErrorActivity extends AppCompatActivity {
@@ -60,7 +61,7 @@ public final class DefaultErrorActivity extends AppCompatActivity {
 
         final CaocConfig config = CustomActivityOnCrash.getConfigFromIntent(getIntent());
 
-        if (config.isShowRestartButton() && config.getRestartActivityClass()!=null) {
+        if (config.isShowRestartButton() && config.getRestartActivityClass() != null) {
             restartButton.setText(R.string.customactivityoncrash_error_activity_restart_app);
             restartButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -106,12 +107,12 @@ public final class DefaultErrorActivity extends AppCompatActivity {
             moreInfoButton.setVisibility(View.GONE);
         }
 
-        Integer defaultErrorActivityDrawableId = config.getErrorDrawable();
-        ImageView errorImageView = ((ImageView) findViewById(R.id.customactivityoncrash_error_activity_image));
+//        Integer defaultErrorActivityDrawableId = config.getErrorDrawable();
+//        ImageView errorImageView = ((ImageView) findViewById(R.id.customactivityoncrash_error_activity_image));
 
-        if (defaultErrorActivityDrawableId != null) {
-            errorImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), defaultErrorActivityDrawableId, getTheme()));
-        }
+//        if (defaultErrorActivityDrawableId != null) {
+//            errorImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), defaultErrorActivityDrawableId, getTheme()));
+//        }
     }
 
     private void copyErrorToClipboard() {
