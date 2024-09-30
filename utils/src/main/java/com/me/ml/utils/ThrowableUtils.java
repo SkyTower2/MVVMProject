@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+/**
+ * 获取异常的完整堆栈跟踪信（提供日志工具类使用）
+ */
 public class ThrowableUtils {
 
     private static final String LINE_SEP = System.getProperty("line.separator");

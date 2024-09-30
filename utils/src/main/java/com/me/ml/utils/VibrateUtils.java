@@ -10,19 +10,29 @@ import android.os.Vibrator;
 import androidx.annotation.RequiresApi;
 import androidx.annotation.RequiresPermission;
 
+/**
+ * 设备震动
+ */
 public final class VibrateUtils {
 
+    /**
+     * 控制设备震动的服务
+     */
     private static Vibrator vibrator;
 
+    //私有构造器防止外部通过new关键字实例化该类
     private VibrateUtils() {
+        //抛出异常明确表示不支持实例化
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
     /**
+     * 基本震动
      * Vibrate.
+     * RequiresPermission注解表明调用此方法需要VIBRATE权限
      * <p>Must hold {@code <uses-permission android:name="android.permission.VIBRATE" />}</p>
      *
-     * @param milliseconds The number of milliseconds to vibrate.
+     * @param milliseconds The number of milliseconds to vibrate. 使设备震动指定的毫秒数
      */
     @RequiresPermission(VIBRATE)
     public static void vibrate(final long milliseconds) {
@@ -32,7 +42,9 @@ public final class VibrateUtils {
     }
 
     /**
+     * 带音频属性的震动（Android 5及以上）
      * Vibrate.
+     * RequiresApi注解表明此方法在API级别21（Android 5.0 Lollipop）及以上才可使用。
      * <p>Must hold {@code <uses-permission android:name="android.permission.VIBRATE" />}</p>
      *
      * @param milliseconds The number of milliseconds to vibrate.
@@ -50,6 +62,8 @@ public final class VibrateUtils {
     }
 
     /**
+     * 兼容震动
+     * 根据Android版本选择合适的震动方法，以支持后台震动
      * VibrateCompat - Can vibrate in background
      * <p>Must hold {@code <uses-permission android:name="android.permission.VIBRATE" />}</p>
      *
@@ -65,6 +79,7 @@ public final class VibrateUtils {
     }
 
     /**
+     * 震动模式（重复震动）
      * Vibrate.
      * <p>Must hold {@code <uses-permission android:name="android.permission.VIBRATE" />}</p>
      *
@@ -79,6 +94,7 @@ public final class VibrateUtils {
     }
 
     /**
+     * 带音频属性的震动模式（Android 5及以上）
      * Vibrate.
      * <p>Must hold {@code <uses-permission android:name="android.permission.VIBRATE" />}</p>
      *
@@ -98,6 +114,7 @@ public final class VibrateUtils {
     }
 
     /**
+     * 兼容震动模式（重复震动）
      * VibrateCompat - Can vibrate in background
      * <p>Must hold {@code <uses-permission android:name="android.permission.VIBRATE" />}</p>
      *
@@ -114,6 +131,7 @@ public final class VibrateUtils {
     }
 
     /**
+     * 取消震动
      * Cancel vibrate.
      * <p>Must hold {@code <uses-permission android:name="android.permission.VIBRATE" />}</p>
      */
@@ -124,7 +142,11 @@ public final class VibrateUtils {
         vibrator.cancel();
     }
 
+    /**
+     * 私有方法：获取Vibrator实例
+     */
     private static Vibrator getVibrator() {
+        //单例模式获取Vibrator实例
         if (vibrator == null) {
             vibrator = (Vibrator) Utils.getApp().getSystemService(Context.VIBRATOR_SERVICE);
         }

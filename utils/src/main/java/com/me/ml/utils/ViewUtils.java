@@ -11,6 +11,9 @@ import androidx.annotation.LayoutRes;
 
 import java.util.Locale;
 
+/**
+ * 视图相关（UI）
+ */
 public class ViewUtils {
 
     /**
